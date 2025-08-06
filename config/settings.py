@@ -155,16 +155,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'booking_room_db',        # Replace with your MySQL DB name
-        'USER': 'root',                   # Replace with your MySQL username
-        'PASSWORD': 'Soklin0976193630',      # Replace with your MySQL password
-        'HOST': '127.0.0.1',              # Localhost IP (don't use 'localhost' to avoid socket issues)
-        'PORT': '3306',                   # Default MySQL port
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'HOST': 'lin23.mysql.pythonanywhere-services.com',  # use your PythonAnywhere username here
+        'PORT': '3306',
+        'NAME': 'lin23$book_db',   # your full DB name including username and dollar sign
+        'USER': 'lin23',              # your PythonAnywhere MySQL username (usually same as your PA username)
+        'PASSWORD': 'bookdb12345@',  # your MySQL password
     }
 }
+
 
 
 AUTH_PASSWORD_VALIDATORS = [

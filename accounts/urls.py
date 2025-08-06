@@ -18,6 +18,9 @@ urlpatterns = [
     path('auth/', include('dj_rest_auth.urls')),           # login/logout/password reset
     path('profile/', ProfileDetail.as_view(), name='profile-detail'),
     
+    path('auth/', include('dj_rest_auth.registration.urls')),
+    
+    
     # Room and Booking endpoints
     path('rooms/', RoomListView.as_view(), name='room-list'),
     path('bookings/date/<str:date_str>/', bookings_by_date, name='bookings-by-date'),

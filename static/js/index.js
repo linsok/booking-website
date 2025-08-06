@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const msgDiv = document.getElementById('reset-code-message');
     msgDiv.innerText = ""; // clear
     try {
-      const response = await fetch('/api/password_reset/', {
+      const response = await fetch('https://lin23.pythonanywhere.com/api/password_reset/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })

@@ -147,30 +147,38 @@ document.addEventListener('DOMContentLoaded', function () {
           password2: password2
         })
       })
-      .then(async res => {
-        const data = await res.json();
-        if (res.ok || data.key) {
-          signupFormEl.reset();
-          showPanel('login-form');
-          showSuccess('Account created! You can now log in.');
-        } else if (data.username && Array.isArray(data.username)) {
-          errorDiv.innerText = data.username[0];
-          errorDiv.style.display = "block";
-        } else if (data.email && Array.isArray(data.email)) {
-          errorDiv.innerText = data.email[0];
-          errorDiv.style.display = "block";
-        } else if (data.non_field_errors && Array.isArray(data.non_field_errors)) {
-          errorDiv.innerText = data.non_field_errors[0];
-          errorDiv.style.display = "block";
-        } else {
-          errorDiv.innerText = "Registration failed: " + JSON.stringify(data);
-          errorDiv.style.display = "block";
-        }
-      })
-      .catch(err => {
-        errorDiv.innerText = "Network error: " + err;
-        errorDiv.style.display = "block";
-      });
+        .then(async res => {
+  const text = await res.text(); // Get raw response
+  let data;
+  try {
+    data = JSON.parse(text); // Try parsing JSON
+  } catch (e) {
+    throw new Error(`Invalid JSON: ${text}`); // This will help you see the HTML error
+  }
+
+  if (res.ok || data.key) {
+    signupFormEl.reset();
+    showPanel('login-form');
+    showSuccess('Account created! You can now log in.');
+  } else if (data.username && Array.isArray(data.username)) {
+    errorDiv.innerText = data.username[0];
+    errorDiv.style.display = "block";
+  } else if (data.email && Array.isArray(data.email)) {
+    errorDiv.innerText = data.email[0];
+    errorDiv.style.display = "block";
+  } else if (data.non_field_errors && Array.isArray(data.non_field_errors)) {
+    errorDiv.innerText = data.non_field_errors[0];
+    errorDiv.style.display = "block";
+  } else {
+    errorDiv.innerText = "Registration failed: " + JSON.stringify(data);
+    errorDiv.style.display = "block";
+  }
+})
+.catch(err => {
+  errorDiv.innerText = "Network error: " + err.message;
+  errorDiv.style.display = "block";
+});
+
     });
   }
 

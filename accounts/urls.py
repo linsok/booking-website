@@ -17,8 +17,9 @@ from .views import (
 urlpatterns = [
     path('auth/', include('dj_rest_auth.urls')),           # login/logout/password reset
     path('profile/', ProfileDetail.as_view(), name='profile-detail'),
+    path('auth/registration/', include('dj_rest_auth.registration.urls')),
     
-    path('auth/', include('dj_rest_auth.registration.urls')),
+   
     
     
     # Room and Booking endpoints

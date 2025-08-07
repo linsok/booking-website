@@ -24,8 +24,8 @@ class Migration(migrations.Migration):
                     end_time TIME NOT NULL,
                     purpose VARCHAR(200),
                     status VARCHAR(20) NOT NULL DEFAULT 'pending',
-                    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
-                    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+                    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+                    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
                     room_id INTEGER NOT NULL REFERENCES accounts_room(id) ON DELETE CASCADE,
                     user_id INTEGER NOT NULL REFERENCES auth_user(id) ON DELETE CASCADE,
                     UNIQUE(room_id, booking_date, start_time, end_time)

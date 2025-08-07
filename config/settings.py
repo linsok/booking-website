@@ -168,7 +168,7 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'lin23$book_db',   # your full DB name including username and dollar sign
         'USER': 'lin23',              # your PythonAnywhere MySQL username (usually same as your PA username)
-        'PASSWORD': 'bookdb12345@',  # your MySQL password
+        'PASSWORD': 'you12345@',  # your MySQL password
     }
 }
 
